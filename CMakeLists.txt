@@ -1,6 +1,6 @@
-# cmake_minimum_required(VERSION <specify CMake version here>)
-project(untitled)
+
+project(MachineLearning)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(untitled SHARED library.cpp library.h)
+add_library(HelloWorld SHARED library.cpp library.h)

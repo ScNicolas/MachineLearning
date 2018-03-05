@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="untitled">
-				<Option output="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/cyguntitled.dll" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/cyguntitled.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -52,15 +52,15 @@
 					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled"/>
-					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="untitled/fast">
-				<Option output="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/cyguntitled.dll" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/cyguntitled.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -73,20 +73,20 @@
 					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled/fast"/>
-					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 untitled/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/library.cpp">
+		<Unit filename="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/library.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/library.h">
+		<Unit filename="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/library.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/bench/CLionProjects/MachineLearning/CMakeLists.txt">
+		<Unit filename="/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -1,7 +1,10 @@
 #include "library.h"
-
+#define DllExport   __declspec( dllexport )
 #include <iostream>
 
-void hello() {
-    std::cout << "Hello, World!" << std::endl;
-}
+class DllExport C
+{
+     void hello() {
+        std::cout << "Hello, World!" << std::endl;
+    }
+};

@@ -1,4 +1,4 @@
-# Install script for directory: /cygdrive/c/Users/bench/CLionProjects/MachineLearning
+# Install script for directory: /cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/cygdrive/c/Users/bench/CLionProjects/MachineLearning/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/cygdrive/c/Users/Nicolas_Travail/CLionProjects/MachineLearning/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
