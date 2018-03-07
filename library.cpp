@@ -53,7 +53,6 @@ extern "C"
 				point[j] = points[(i * size) + j];
 			}
 			executeRosenBlatt(w, point, size);
-
 		}
 
 		return w;
@@ -83,6 +82,7 @@ extern "C"
 				w[0] = w[0] + (alpha * (point[0] - signPoint));
 				signPoint = sign(w, point);
 			}
+            free(point);
 		}
 		return w;
 	}
@@ -95,7 +95,9 @@ extern "C"
 				point[j] = points[(i * size) + j];
 			}
 			points[(i * size)] = sign(w, point);
+            free(point);
 		}
+
 		return points;
 
 	}
