@@ -90,7 +90,7 @@ double *executeLinear2(int size, double points[], int nbrPoints) {
 
 }
 
-int hello(){
+    __declspec(dllexport) int hello(){
     return 10;
-}
+    }
 }
