@@ -50,7 +50,7 @@ class DllExport C
         return w;
     }
 
-    double* executeLinear(int size,double points[], int nbrPoints) {
+    double* executeLinear2(int size,double points[], int nbrPoints) {
         double* w=generateRosenBlatt(size);
         for(int i=0;i<nbrPoints;i++) {
             double point[size];
@@ -58,8 +58,37 @@ class DllExport C
                 point[j]=points[(i*size)+j];
             }
             executeRosenBlatt(w,point,size);
+
         }
 
         return w;
+    }
+
+    double * executeLinear(int size,double points[], int nbrPoints){
+        double* w=(double*) malloc(sizeof(double)*size);
+
+        for(int i=0;i<size;i++){
+            srand (time(NULL));
+            w[i]= rand() % 1 + -1;
+        }
+
+        for(int i=0;i<nbrPoints;i++) {
+            double point[size];
+            for(int j=0;j<size;j++){
+                point[j]=points[(i*size)+j];
+            }
+            double alpha = 0.1;
+            int signPoint = sign(w, point);
+            while (signPoint != point[0]) {
+                for (int i = 1; i < size; i++) {
+                    w[i] = w[i] + (alpha * (point[0] - signPoint)) * point[i];
+                }
+                w[0] = w[0] + (alpha * (point[0] - signPoint));
+            }
+
+        }
+
+        return w;
+
     }
 };
