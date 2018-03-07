@@ -60,14 +60,15 @@ double *executeLinear2(int size, double points[], int nbrPoints) {
 
     return w;
 }
-
- __declspec(dllexport) double *executeLinear(int size, double points[], int nbrPoints) {
-    double *w = (double *) malloc(sizeof(double) * size);
-
+__declspec(dllexport) double *generateModel(int size){
+        double *w = (double *) malloc(sizeof(double) * size);
     for (int i = 0; i < size; i++) {
         srand(time(NULL));
         w[i] = rand() % 1 + -1;
     }
+    return w;
+}
+ __declspec(dllexport) double *trainLinear(double& w[],int size, double points[], int nbrPoints) {
 
     for (int i = 0; i < nbrPoints; i++) {
         double point[size];
@@ -78,15 +79,25 @@ double *executeLinear2(int size, double points[], int nbrPoints) {
         int signPoint = sign(w, point);
         while (signPoint != point[0]) {
             for (int i = 1; i < size; i++) {
-                w[i] = w[i] + (alpha * (point[0] - signPoint)) * point[i];
+                w[i] = w[i] + (alpha * (point[0] - signPoint) * point[i]);
             }
             w[0] = w[0] + (alpha * (point[0] - signPoint));
+            signPoint = sign(w, point);
         }
-
     }
-
     return w;
+}
 
+__declspec(dllexport) double* executeLinear(double w[],int size, double& points[], int nbr_points) {
+        for(int i=0;i<nbr_points;i++){
+            double point[size];
+
+            for (int j=0; j < size; j++) {
+                point[j] = points[(i * size) + j];
+            }
+            points[(i * size)]=sign(w,point);
+        }
+    return points;
 
 }
 
