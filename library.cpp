@@ -1,8 +1,8 @@
-#include "library.h"
+
 #define DllExport   __declspec( dllexport )
 #include <iostream>
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>
+#include <cstdlib>     /* srand, rand */
+#include <ctime>
 
 class DllExport C
 {
@@ -25,7 +25,7 @@ class DllExport C
         return 0;
     }
 
-    double generateWeight(int size, int minRange, int maxRange)[]{
+    double* generateWeight(int size, int minRange, int maxRange){
         double w[size];
         for(int i=0;i<size;i++){
             srand (time(NULL));
@@ -34,7 +34,32 @@ class DllExport C
         return w;
     }
 
+    double* generateRosenBlatt(int size){
+        return generateWeight(size,-1,1);
+    }
 
+    double* executeRosenBlatt(double w[], double point[], int size) {
+        double alpha = 0.1;
+        int signPoint = sign(w, point);
+        while (signPoint != point[0]) {
+            for (int i = 1; i < size; i++) {
+                w[i] = w[i] + (alpha * (point[0] - signPoint)) * point[i];
+            }
+            w[0] = w[0] + (alpha * (point[0] - signPoint));
+        }
+        return w;
+    }
 
+    double* executeLinear(int size,double points[], int nbrPoints) {
+        double* w=generateRosenBlatt(size);
+        for(int i=0;i<nbrPoints;i++) {
+            double point[size];
+            for(int j=0;j<size;j++){
+                point[j]=points[(i*size)+j];
+            }
+            executeRosenBlatt(w,point,size);
+        }
 
+        return w;
+    }
 };
