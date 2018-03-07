@@ -5,10 +5,10 @@
 
 extern "C"
 {
-	int sign(double w[], double x[]) {
+	int sign(double w[], double x[], int size) {
 
 		double sum = 0;
-		for (int i = 1; i <= 2; i++) {
+		for (int i = 1; i < size; i++) {
 			sum += w[i] * x[i];
 		}
 		sum += w[0];
@@ -35,7 +35,7 @@ extern "C"
 
 	double *executeRosenBlatt(double w[], double point[], int size) {
 		double alpha = 0.1;
-		int signPoint = sign(w, point);
+		int signPoint = sign(w, point,size);
 		while (signPoint != point[0]) {
 			for (int i = 1; i < size; i++) {
 				w[i] = w[i] + (alpha * (point[0] - signPoint)) * point[i];
@@ -74,13 +74,13 @@ extern "C"
 				point[j] = points[(i * size) + j];
 			}
 			double alpha = 0.1;
-			int signPoint = sign(w, point);
+			int signPoint = sign(w, point,size);
 			while (signPoint != point[0]) {
 				for (int i = 1; i < size; i++) {
 					w[i] = w[i] + (alpha * (point[0] - signPoint) * point[i]);
 				}
 				w[0] = w[0] + (alpha * (point[0] - signPoint));
-				signPoint = sign(w, point);
+				signPoint = sign(w, point,size);
 			}
             free(point);
 		}
@@ -94,8 +94,16 @@ extern "C"
 			for (int j = 0; j < size; j++) {
 				point[j] = points[(i * size) + j];
 			}
-			points[(i * size)] = sign(w, point);
+			points[(i * size)] = sign(w, point,size);
             free(point);
+		}
+
+		return points;
+
+	}
+	__declspec(dllexport) int aevaluateLinear(double w[], int size, double point[]) {
+
+			return  sign(w, point,size);
 		}
 
 		return points;
