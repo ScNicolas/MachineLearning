@@ -129,27 +129,6 @@ __declspec(dllexport) void LinearRegression(double x[], double y[], int n, doubl
     *b = bi;
 
 }
-}
-
-__declspec(dllexport) double *trainLinear(double& w[],int size, double points[], int nbrPoints) {
-
-    for (int i = 0; i < nbrPoints; i++) {
-        double point[size];
-        for (int j = 0; j < size; j++) {
-            point[j] = points[(i * size) + j];
-        }
-        double alpha = 0.1;
-        int signPoint = sign(w, point);
-        while (signPoint != point[0]) {
-            for (int i = 1; i < size; i++) {
-                w[i] = w[i] + (alpha * (point[0] - signPoint) * point[i]);
-            }
-            w[0] = w[0] + (alpha * (point[0] - signPoint));
-            signPoint = sign(w, point);
-        }
-    }
-    return w;
-}
 
 __declspec(dllexport) double* executeLinear(double w[],int size, double& points[], int nbr_points) {
     for(int i=0;i<nbr_points;i++){
@@ -163,6 +142,9 @@ __declspec(dllexport) double* executeLinear(double w[],int size, double& points[
     return points;
 
 }
+}
+
+
 
 
 
