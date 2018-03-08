@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstdlib>     /* srand, rand */
 #include <ctime>
@@ -22,25 +21,26 @@ extern "C"
 
 	double *generateWeight(int size, int minRange, int maxRange) {
 		double *w = (double *)malloc(sizeof(double) * size);
+		srand(time(NULL));
 		for (int i = 0; i < size; i++) {
-			srand(time(NULL));
 			w[i] = rand() % maxRange + minRange;
 		}
 		return w;
 	}
 
 	double *generateRosenBlatt(int size) {
-		return generateWeight(size, -1, 1);
+		return generateWeight(size, -1, 2);
 	}
 
 	double *executeRosenBlatt(double w[], double point[], int size) {
 		double alpha = 0.1;
-		int signPoint = sign(w, point,size);
+		int signPoint = sign(w, point, size);
 		while (signPoint != point[0]) {
 			for (int i = 1; i < size; i++) {
 				w[i] = w[i] + (alpha * (point[0] - signPoint)) * point[i];
 			}
 			w[0] = w[0] + (alpha * (point[0] - signPoint));
+			int signPoint = sign(w, point, size);
 		}
 		return w;
 	}
@@ -53,95 +53,69 @@ extern "C"
 				point[j] = points[(i * size) + j];
 			}
 			executeRosenBlatt(w, point, size);
+
 		}
 
 		return w;
 	}
 	__declspec(dllexport) double *generateModel(int size) {
 		double *w = (double *)malloc(sizeof(double) * size);
+		srand(time(NULL));
 		for (int i = 0; i < size; i++) {
-			srand(time(NULL));
-			w[i] = rand() % 1 + -1;
+			double f = (double)rand() / RAND_MAX;
+			w[i] = -1.0 + f * (2.0);
+			//w[i] = (double)rand() % 2 + -1.0;
 		}
 		return w;
 	}
 
 	__declspec(dllexport) double *trainLinear(double  w[], int size, double points[], int nbrPoints) {
 
-		for (int i = 0; i < nbrPoints; i++) {
-			double * point = (double *)malloc(sizeof(double) * size);
-			for (int j = 0; j < size; j++) {
-				point[j] = points[(i * size) + j];
-			}
-			double alpha = 0.1;
-			int signPoint = sign(w, point,size);
-			while (signPoint != point[0]) {
-				for (int i = 1; i < size; i++) {
-					w[i] = w[i] + (alpha * (point[0] - signPoint) * point[i]);
+		int cpt = 0;
+		bool find = true;
+		while (cpt < 100000 && find == true) {
+			find = false;
+			for (int i = 0; i < nbrPoints; i++) {
+				double * point = (double *)malloc(sizeof(double) * size);
+				for (int j = 0; j < size; j++) {
+					point[j] = points[(i * size) + j];
 				}
-				w[0] = w[0] + (alpha * (point[0] - signPoint));
-				signPoint = sign(w, point,size);
+				double alpha = 0.1;
+				int signPoint = sign(w, point, size);		
+				while (signPoint != point[0]) {
+					find = true;
+					for (int i = 1; i < size; i++) {
+						w[i] = w[i] + (alpha * (point[0] - signPoint) * point[i]);
+					}
+					w[0] = w[0] + (alpha * (point[0] - signPoint));
+					signPoint = sign(w, point, size);
+				}
+				free(point);
 			}
-            free(point);
+			cpt++;
 		}
 		return w;
 	}
 
 	__declspec(dllexport) double* executeLinear(double w[], int size, double points[], int nbr_points) {
-		for (int i = 0; i<nbr_points; i++) {
+		for (int i = 0; i < nbr_points; i++) {
 			double * point = (double *)malloc(sizeof(double) * size);
 
 			for (int j = 0; j < size; j++) {
 				point[j] = points[(i * size) + j];
 			}
-			points[(i * size)] = sign(w, point,size);
-            free(point);
+			points[(i * size)] = sign(w, point, size);
 		}
-
 		return points;
 
 	}
-	__declspec(dllexport) int aevaluateLinear(double w[], int size, double point[]) {
+	__declspec(dllexport) int evaluateLinear(double w[], int size, double point[]) {
 
-			return  sign(w, point,size);
-		}
-
-		return points;
-
+		return sign(w, point, size);
 	}
+
 
 	__declspec(dllexport) int hello() {
 		return 10;
 	}
-
-__declspec(dllexport) void LinearRegression(double x[], double y[], int n, double *a, double *b) {
-    int i;
-    double xsum, ysum, xysum, xxsum;
-    double ai, bi;
-
-    xsum = 0.0;
-    ysum = 0.0;
-
-    xysum = 0.0;
-    xxsum = 0.0;
-
-    for (i = 0; i < n; i++) {
-        xsum = xsum + x[i];
-        ysum = ysum + y[i];
-        xysum = xysum + x[i] * y[i];
-        xxsum = xxsum + x[i] * x[i];
-    }
-    ai = (n * xysum - xsum * ysum) / (n * xxsum - xsum * xsum);
-    bi = (ysum - ai * xsum) / n;
-    *a = ai;
-    *b = bi;
-
 }
-}
-
-
-
-
-
-
-
