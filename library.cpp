@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>     /* srand, rand */
 #include <ctime>
+#include "Eigen/Dense"
 
 extern "C"
 {
@@ -63,7 +64,7 @@ extern "C"
 		srand(time(NULL));
 		for (int i = 0; i < size; i++) {
 			double f = (double)rand() / RAND_MAX;
-			w[i] = -1.0 + f * (2.0);
+			w[i] = i; //-1.0 + f * (2.0);
 			//w[i] = (double)rand() % 2 + -1.0;
 		}
 		return w;
@@ -109,6 +110,46 @@ extern "C"
 		return points;
 
 	}
+
+	__declspec(dllexport) double * train_linear_regression(double points [],int nbTrainingSphere, int size) {
+
+		Eigen::MatrixXd x(nbTrainingSphere, size);
+		Eigen::MatrixXd y(nbTrainingSphere, 1);
+		
+		for (int i = 0; i < nbTrainingSphere; i++) {
+			x(i, 0) = 1;
+			x(i, 1) = points[i*size+1];
+			x(i, 2) = points[i*size + 2];
+			x(i, 3) = points[i*size + 3];
+			y(i, 0) = points[i*size];		
+		}
+
+		Eigen::MatrixXd xT = x.transpose();
+		Eigen::MatrixXd xTx = xT * x;
+		Eigen::MatrixXd xTxInv =  xTx.inverse();
+		Eigen::MatrixXd xTxInvXT = xTxInv * xT;
+		Eigen::MatrixXd matrixW = xTxInvXT * y;
+
+		double* w = (double*)malloc(sizeof(double)*size);
+		for (int i = 0; i < size; i++) {
+			w[i] = matrixW(i, 0);
+		}
+		return w;
+	}
+
+
+	__declspec(dllexport) double execRegression(double w[], double x[], int size) {
+
+		double sum = 0;
+		for (int i = 1; i < size; i++) {
+			sum += w[i] * x[i];
+		}
+		sum += w[0];
+		
+		return sum;
+	}
+
+
 	__declspec(dllexport) int evaluateLinear(double w[], int size, double point[]) {
 
 		return sign(w, point, size);
