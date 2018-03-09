@@ -2,9 +2,116 @@
 #include <cstdlib>     /* srand, rand */
 #include <ctime>
 #include "Eigen/Dense"
+#include <math.h>
 
 extern "C"
 {
+	struct rbfStruct
+	{
+		int nbPoints;
+		double ** trainingPoints;
+		double * weight;
+		int alpha;
+	};
+
+
+
+	__declspec(dllexport)rbfStruct * createModel(double * points[], int nbPoints, int sizePoints , int alpha) 
+	{
+		rbfStruct * rbf = (rbfStruct*)malloc(sizeof(rbfStruct));
+		rbf->nbPoints = nbPoints;
+		rbf->trainingPoints = points;
+		rbf->weight = (double *)malloc(sizeof(double) * rbf->nbPoints);
+		rbf->alpha = alpha;
+
+		return rbf;
+	}
+
+	double get_distance(double x [], double y [] , int size) {
+		
+		double tmpValue = 0.0;
+		for (int i = 1; i < size; i++) {
+			tmpValue += pow(x[i] - y[i],2);
+		}
+		return tmpValue;
+
+	}
+
+	__declspec(dllexport) double * train_rbf(double  points[], int  size, int nbPoints, double alpha) {
+
+		Eigen::MatrixXd x(nbPoints, nbPoints);
+		Eigen::MatrixXd y(nbPoints, 1);
+
+		for (int i = 0; i < nbPoints; i++)
+		{
+			for (int j = 0; j < nbPoints; j++)
+			{
+				double * pointj = (double *)malloc(sizeof(double) * size);
+				for (int k = 0; k<size; k++) {
+					pointj[k] = points[j*size + k];
+				}
+				double * pointi = (double *)malloc(sizeof(double) * size);
+				for (int k = 0; k<size; k++) {
+					pointi[k] = points[i*size + k];
+				}
+
+				x(i, j) = exp(alpha * -1 * get_distance(pointi, pointj, size));
+				free(pointi);
+				free(pointj);
+			}
+		}
+		for (int i = 0; i < nbPoints; i++)
+		{
+			y(i, 0) = points[i*size];
+		}
+
+		Eigen::MatrixXd tmp = x.inverse();
+		Eigen::MatrixXd wtmp = tmp*y;
+
+		double * w = (double*)malloc(sizeof(double)*nbPoints);
+		for (int i = 0; i < nbPoints; i++) {
+			w[i] = wtmp(i, 0);
+		}
+
+		return w;
+	}
+
+	__declspec(dllexport) double execRbfRegression(double w[], double x[], double * trainingPoints, int nbTrainingsPoints, int size, double alpha) {
+
+		double sum = 0;
+
+		for (int i = 0; i < nbTrainingsPoints; i++)
+		{
+			double * point = (double *)malloc(sizeof(double) * size);
+			for (int j = 0; j<size; j++) {
+				point[j] = trainingPoints[i*size + j];
+			}
+			sum += w[i] * exp(alpha * -1 * get_distance(x, point, size));
+			free(point);
+		}
+		return sum;
+	}
+
+	__declspec(dllexport) double execRbfClassif(double w[], double x[], double * trainingPoints, int nbTrainingsPoints, int size, double alpha) {
+
+		double sum = 0;
+
+		for (int i = 0; i < nbTrainingsPoints; i++)
+		{
+			double * point = (double *)malloc(sizeof(double) * size);
+			for (int j = 0; j<size; j++) {
+				point[j] = trainingPoints[i*size + j];
+			}
+			sum += w[i] * exp(alpha * -1 * get_distance(x, point, size));
+			free(point);
+		}
+		if (sum > 0)
+			return 1;
+		else if (sum < 0)
+			return -1;
+		else return 0;
+	}
+	
 	int sign(double w[], double x[], int size) {
 
 		double sum = 0;
@@ -111,27 +218,28 @@ extern "C"
 
 	}
 
-	__declspec(dllexport) double * train_linear_regression(double points [],int nbTrainingSphere, int size) {
+	__declspec(dllexport) double * train_linear_regression(double points[], int nbTrainingSphere, int sizeW) {
 
-		Eigen::MatrixXd x(nbTrainingSphere, size);
+		Eigen::MatrixXd x(nbTrainingSphere, (sizeW));
 		Eigen::MatrixXd y(nbTrainingSphere, 1);
-		
+
 		for (int i = 0; i < nbTrainingSphere; i++) {
 			x(i, 0) = 1;
-			x(i, 1) = points[i*size+1];
-			x(i, 2) = points[i*size + 2];
-			x(i, 3) = points[i*size + 3];
-			y(i, 0) = points[i*size];		
+			y(i, 0) = points[i * (sizeW )];
+
+			for (int j = 1; j<(sizeW); j++) {
+				x(i, j) = points[i * (sizeW) + j];
+			}
 		}
 
 		Eigen::MatrixXd xT = x.transpose();
 		Eigen::MatrixXd xTx = xT * x;
-		Eigen::MatrixXd xTxInv =  xTx.inverse();
+		Eigen::MatrixXd xTxInv = xTx.inverse();
 		Eigen::MatrixXd xTxInvXT = xTxInv * xT;
 		Eigen::MatrixXd matrixW = xTxInvXT * y;
 
-		double* w = (double*)malloc(sizeof(double)*size);
-		for (int i = 0; i < size; i++) {
+		double * w = (double*)malloc(sizeof(double)*sizeW);
+		for (int i = 0; i < sizeW; i++) {
 			w[i] = matrixW(i, 0);
 		}
 		return w;
@@ -159,4 +267,7 @@ extern "C"
 	__declspec(dllexport) int hello() {
 		return 10;
 	}
+
+
+
 }
